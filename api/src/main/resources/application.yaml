@@ -1,0 +1,50 @@
+spring:
+  threads:
+    virtual:
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  jpa:
+    show-sql: true
+    properties:
+      format_sql: true
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate:
+        use_sql_comments: true
+      ddl-auto: validate
+  datasource:
+    url: jdbc:postgresql://moonsh.kr:2345/book_store
+    driver-class-name: org.postgresql.Driver
+    username: bookstore
+    password: rgt1234!
+#    url: ${SPRING_DATASOURCE_URL}
+#    driver-class-name: org.postgresql.Driver
+#    username: ${SPRING_DATASOURCE_USERNAME}
+#    password: ${SPRING_DATASOURCE_PASSWORD}
+
+encrypt:
+  algorithm: aes
+  secretKey: AniMonsterBemine
+  iv: BmineAniMonster
+  activate: false
+
+
+jwt:
+  secret:
+    key: AnimonsterInBmineAISecretKey123!@#
+  access-token:
+    plus-hour: 1
+  refresh-token:
+    plus-hour: 12
+
+
+server:
+  servlet:
+    encoding:
+      force-response: true
+  port: 7077
+
+
+
