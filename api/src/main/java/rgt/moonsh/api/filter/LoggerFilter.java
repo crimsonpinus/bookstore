@@ -31,7 +31,6 @@ public class LoggerFilter implements Filter {
         headerNames.asIterator().forEachRemaining(headerKey ->{
             var headerValue = request.getHeader(headerKey);
 
-            //authorization-token : ??? , user-agent : ???
             headerValues
                     .append("[")
                     .append(headerKey)
