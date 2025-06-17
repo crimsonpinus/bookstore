@@ -4,6 +4,9 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import rgt.moonsh.api.common.error.BookErrorCode;
@@ -23,6 +26,12 @@ public class BookStoreService {
 
     public List<TblBookInfoEntity> findAll() {
         return tblBookInfoRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    }
+
+    public Page<TblBookInfoEntity> search(String name, String author, Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id"));
+//        return tblBookInfoRepository.findByNameContainingAndAuthorContaining(name, author, pageable);
+        return tblBookInfoRepository.search(name, author, pageable);
     }
 
     public TblBookInfoEntity findById(TblBookInfoEntity entity) {

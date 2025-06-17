@@ -1,6 +1,7 @@
 package rgt.moonsh.api.domain.bookstore.business;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import rgt.moonsh.api.common.annotation.Business;
 import rgt.moonsh.api.domain.bookstore.controller.model.BookCreateRequest;
 import rgt.moonsh.api.domain.bookstore.controller.model.BookInfoRequest;
@@ -8,6 +9,7 @@ import rgt.moonsh.api.domain.bookstore.controller.model.BookInfoResponse;
 import rgt.moonsh.api.domain.bookstore.controller.model.BookSummaryResponse;
 import rgt.moonsh.api.domain.bookstore.converter.BookStoreConverter;
 import rgt.moonsh.api.domain.bookstore.service.BookStoreService;
+import rgt.moonsh.db.db.book.entity.TblBookInfoEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,5 +52,10 @@ public class BookStoreBusiness {
         var toEntity = bookStoreConverter.toEntity(id);
         var entity = bookStoreService.delete(toEntity);
         return bookStoreConverter.toResponse(entity);
+    }
+
+    public Page<TblBookInfoEntity> search(String name, String author, Integer page, Integer size) {
+        var entities =bookStoreService.search(name, author, page, size);
+        return entities;
     }
 }
