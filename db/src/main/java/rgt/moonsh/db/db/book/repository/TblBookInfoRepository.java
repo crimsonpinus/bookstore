@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface TblBookInfoRepository extends JpaRepository<TblBookInfoEntity, Long> {
     Optional<TblBookInfoEntity> findFirstById(Long id);
-
+    void deleteById(Long id);
 }
