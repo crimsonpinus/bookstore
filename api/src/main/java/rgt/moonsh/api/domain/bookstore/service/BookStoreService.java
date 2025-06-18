@@ -16,6 +16,7 @@ import rgt.moonsh.api.domain.bookstore.controller.model.BookInfoRequest;
 import rgt.moonsh.db.db.book.entity.TblBookInfoEntity;
 import rgt.moonsh.db.db.book.repository.TblBookInfoRepository;
 
+import java.time.Instant;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -68,6 +69,7 @@ public class BookStoreService {
         return entityCheck;
     }
     public TblBookInfoEntity save(TblBookInfoEntity entity) {
+        entity.setRegDate(Instant.now());
         return tblBookInfoRepository.save(entity);
     }
 
