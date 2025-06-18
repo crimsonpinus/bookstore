@@ -16,6 +16,15 @@ public class OpenApiConfig {
     private static final String API_DESCRIPTION = """
             ***개발시에는 바로 호출하여 사용 가능***\n
             
+            ***아래의 구조로 응답함***\n
+                {
+                  "result": {
+                    "result_code": 500,
+                    "result_message": "메세지",
+                    "result_description": "세부 메세지"
+                  },
+                  "body": Object
+                }
             """;
     @Bean
     public OpenAPI OpenAPIConfig() {
